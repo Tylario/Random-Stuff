@@ -37,10 +37,10 @@
 </style>
 <body onmousemove="scopepos()">
 	<div id="floating_head">
-		<img src="effects/alive.png" id="face" height="200px">
+		<img src="resources/alive.png" id="face" height="200px">
 	</div>
 	<div id="scope_position">
-		<img id="gun_scope" onclick="shoot()" src="effects/sight.png" height="130px" width="175px">
+		<img id="gun_scope" onclick="shoot()" src="resources/sight.png" height="130px" width="175px">
 	</div>
 	<div id="stats">
 		<center>
@@ -99,7 +99,7 @@
 	}, 10)
 
 	function shoot(){
-		var audio = new Audio('effects/shot.mp3');
+		var audio = new Audio('resources/shot.mp3');
 		audio.play();	
 
 		if(event.clientX > head_x){
@@ -109,9 +109,9 @@
 
 						kills = kills+1;
 						document.getElementById('kills').innerText = kills;
-						document.getElementById("face").src = "effects/dead.png";
+						document.getElementById("face").src = "resources/dead.png";
 
-						setTimeout(function(){ document.getElementById("face").src = "effects/alive.png";	}, 600);
+						setTimeout(function(){ document.getElementById("face").src = "resources/alive.png";	}, 600);
 
 					}
 				}
