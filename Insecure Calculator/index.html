@@ -1,0 +1,272 @@
+<html>
+	<head>
+		<title>
+			Insecure Calculator
+		</title>
+	<head>
+	<style>
+
+		#container{
+			position:absolute;
+			width:350px;
+			height:300px;
+			left:50%;
+			border-radius:5%;
+			margin-left:-175px;
+			border:solid black 2px;
+			top:50%;
+			margin-top:-250px;
+			background:#ffffff;
+		}
+
+		#button1{
+			position:absolute;
+			left:20px;
+			bottom:70px;
+		}
+
+		#button2{
+			position:absolute;
+			left:80px;
+			bottom:70px;
+		}
+
+		#button3{
+			position:absolute;
+			left:140px;
+			bottom:70px;
+		}
+		#button4{
+			position:absolute;
+			left:20px;
+			bottom:130px;
+		}
+
+		#button5{
+			position:absolute;
+			left:80px;
+			bottom:130px;
+		}
+
+		#button6{
+			position:absolute;
+			left:140px;
+			bottom:130px;
+		}
+		#button7{
+			position:absolute;
+			left:20px;
+			bottom:190px;
+		}
+
+		#button8{
+			position:absolute;
+			left:80px;
+			bottom:190px;
+		}
+
+		#button9{
+			position:absolute;
+			left:140px;
+			bottom:190px;
+		}
+		#button_{
+			position:absolute;
+			left:20px;
+			bottom:10px;
+		}
+
+		#button0{
+			position:absolute;
+			left:80px;
+			bottom:10px;
+		}
+
+		#button-{
+			position:absolute;
+			left:140px;
+			bottom:10px;
+		}
+		#buttond{
+			position:absolute;
+			left:200px;
+			bottom:190px;
+		}
+		#buttonx{
+			position:absolute;
+			left:200px;
+			bottom:130px;
+		}
+		#buttonp{
+			position:absolute;
+			left:200px;
+			bottom:70px;
+		}
+		#buttone{
+			position:absolute;
+			left:200px;
+			bottom:10px;
+		}
+
+		#answerbox{
+			position:absolute;
+			top:20px;
+			font-size:20;
+			left:19px;
+			width:295px;
+			height:24px;
+			border:2px solid black;
+			background:#ffffff;
+			padding:5px;
+		}
+
+		#idiot{
+			position:absolute;
+			bottom:50px;
+			right:50px;
+			height:20px;
+			width:50px;
+			color:gray;
+		}
+
+
+	</style>
+	<body>
+		<div id="container">
+			<div id="button1">
+				<button onclick="addToText(1)"> 1 </button>
+			</div>
+			<div id="button2">
+				<button onclick="addToText(2)"> 2 </button>
+			</div>
+			<div id="button3">
+				<button onclick="addToText(3)"> 3 </button>
+			</div>
+			<div id="button4">
+				<button onclick="addToText(4)"> 4 </button>
+			</div>
+			<div id="button5">
+				<button onclick="addToText(5)"> 5 </button>
+			</div>
+			<div id="button6">
+				<button onclick="addToText(6)"> 6 </button>
+			</div>
+			<div id="button7">
+				<button onclick="addToText(7)"> 7 </button>
+			</div>
+			<div id="button8">
+				<button onclick="addToText(8)"> 8 </button>
+			</div>
+			<div id="button9">
+				<button onclick="addToText(9)"> 9 </button>
+			</div>
+			<div id="button_">
+				<button onclick="addToText('.')"> . </button>
+			</div>
+			<div id="button0">
+				<button onclick="addToText(0)"> 0 </button>
+			</div>
+			<div id="button-">
+				<button onclick="addToText('-')"> - </button>
+			</div>
+			<div id="buttone">
+				<button onclick="addToText('='), equal()"> = </button>
+			</div>
+			<div id="buttonp">
+				<button onclick="addToText('+')"> + </button>
+			</div>
+			<div id="buttond">
+				<button onclick="addToText('/')"> / </button>
+			</div>
+			<div id="buttonx">
+				<button onclick="addToText('*')"> X </button>
+			</div>
+			<div id="answerbox">
+
+					<span id="answer_text"></span>
+
+			</div>
+			<div id="idiot">
+				id-10-t Instrument 2017
+			</div>
+		</div>
+	</body>
+	<script>
+
+	var reset = false;
+	var thing = "";
+	var number;
+		function addToText(thing){
+			if (reset = true) {
+
+
+ 			}
+
+			var el = document.getElementById("answer_text");
+			el.innerText += thing;
+var operations = [];
+el.innerText.replace(/[^0-9]?[0-9\.]*/g, function(part) {
+	var parts = part.match(/([^0-9]?)([0-9\.]*)/);
+//	debugger;
+	if (!parts) {
+		throw new Error('something wrong');
+	}
+	if (parts[2].length > 0) {
+		operations.push({
+			operator: parts[1],
+			value: parseFloat(parts[2] || '0')
+		});
+	}
+console.log(operations);
+});
+if (operations.length > 0) {
+	 number = operations[0].value;
+	for (var i = 1; i < operations.length; i++) {
+		var operator = operations[i].operator;
+		var operatorNumber = operations[i].value;
+		if (operator === '*') {
+			number *= (Math.floor(10*((Math.random()*3)-1.5))/10 + operatorNumber);
+		} else if (operator === '/') {
+			number /= (Math.floor(10*((Math.random()*3)-1.5))/10 + operatorNumber);
+		} else if (operator === '-') {
+			number -= (Math.floor(10*((Math.random()*3)-1.5))/10 + operatorNumber);
+		} else if (operator === '+') {
+			number += (Math.floor(10*((Math.random()*3)-1.5))/10 + operatorNumber);
+		}
+	}
+	console.log(number);
+}
+
+
+		}
+
+		function equal(){
+			setTimeout(function(){
+						
+				var insecure = "hopefully";
+				var random = Math.random();
+					if(random<0.1){insecure = "hopefully"}
+					else if(random<0.2){insecure = "maybe"}
+					else if(random<0.3){insecure = "I think"}
+					else if(random<0.4){insecure = "probably"}
+					else if(random<0.5){insecure = "Umm..."}
+					else if(random<0.6){insecure = "I'm not sure but"}
+					else if(random<0.7){insecure = "Possibly"}
+					else if(random<0.8){insecure = "Most Likely"}
+					else if(random<0.9){insecure = "It could be"}
+					else {insecure = "I guess"}
+					
+				 document.getElementById("answer_text").innerText = insecure + " " + (Math.floor(number*10)/10);		
+				reset = true;
+				}, 500
+			)			
+		}
+
+	</script>
+</html>
+
+
+
+
+
+

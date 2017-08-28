@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<title>
+			Question Answerer
+		</title>
+	</head>
+	<style>
+
+		#question{
+			position:absolute;
+			width:400px;
+			height:50px;
+			left:50%;
+			top:200px;
+			margin-left:-200px;
+		}
+
+		#answer{
+			position:absolute;
+			top:300px;
+			width:400px;
+			height:300px;
+			left:50%;
+			margin-left:-200px;
+		}
+
+		#big{
+			font-size:110;
+		}
+
+	</style>
+	<body>
+		<div id="question">
+			<center>
+				Ask your question below. <br>
+				<input type="text">
+				</input> ? 
+				<button type="button" onclick="calculate_response()">Ask</button>
+			</center>
+		</div>
+		<div id="answer">
+			<center>
+				<div id="big">
+					<span id="result">
+					</span>
+				</div>
+					<span id="result2">
+					</span>
+			</center>
+		</div>
+	</body>
+	<script>
+		var yes_no = "no";
+
+		function calculate_response(){
+			document.getElementById("result").innerText  = " ";
+				setTimeout(function(){
+					document.getElementById("result2").innerText  = "Analyzing";
+				}, 0);
+				setTimeout(function(){
+					document.getElementById("result2").innerText  = "Analyzing.";
+				}, 500);
+				setTimeout(function(){
+					document.getElementById("result2").innerText  = "Analyzing..";
+				}, 1000);
+				setTimeout(function(){
+					document.getElementById("result2").innerText  = "Analyzing...";
+				}, 1500);
+				setTimeout(function(){
+				document.getElementById("result2").innerText  = "Analyzing";
+				}, 2000);
+				setTimeout(function(){
+					document.getElementById("result2").innerText  = "Analyzing.";
+				}, 2500);
+				setTimeout(function(){
+					document.getElementById("result2").innerText  = "Analyzing..";
+				}, 3000);
+				setTimeout(function(){
+					document.getElementById("result2").innerText  = "Analyzing...";
+				}, 3500);
+				setTimeout(function(){
+				document.getElementById("result2").innerText  = "Analyzing";
+				}, 4000);
+				setTimeout(function(){
+					document.getElementById("result2").innerText  = "Analyzing.";
+				}, 4500);
+				setTimeout(function(){
+					document.getElementById("result2").innerText  = "Analyzing..";
+				}, 5000);
+				setTimeout(function(){
+					document.getElementById("result2").innerText  = "Analyzing...";
+				}, 5500);
+				setTimeout(function(){
+					document.getElementById("result2").innerText  = "Analyzing...";
+
+
+			if(Math.random()*2 > 1){
+				var yes_no = "yes";
+			} else {
+				var yes_no = "no";
+			}
+			document.getElementById("result").innerText  = yes_no;
+			document.getElementById("result2").innerText  = " ";
+				}, 5800);
+		}
+	</script>
+</html>

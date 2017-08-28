@@ -1,0 +1,128 @@
+<html>
+<head>
+	<title>
+		Explosing Tyler's Head.
+	</title>
+</head>
+<style>
+	#stats{
+		position:absolute;
+		width:100%;
+		height:50px;
+		bottom:50px;
+		left:0;
+		border:0px solid black;
+	}
+
+	#font_size{
+		font-size:35;
+	}
+
+	#scope_position{
+		position:absolute;
+		height:130px;
+		width:175px;
+		left:0px;
+		top:0px;
+	}
+
+	#floating_head{
+		position:absolute;
+		width:200;
+		height:200;
+		left:0;
+		top:0;
+	}
+
+</style>
+<body onmousemove="scopepos()">
+	<div id="floating_head">
+		<img src="effects/alive.png" id="face" height="200px">
+	</div>
+	<div id="scope_position">
+		<img id="gun_scope" onclick="shoot()" src="effects/sight.png" height="130px" width="175px">
+	</div>
+	<div id="stats">
+		<center>
+			<div id="font_size">
+				Heads Shot: <span id="kills"></span>
+			</div>
+		</center>
+	</div>
+	</div>
+</body>
+<script>
+
+	var kills = 0;
+	var mousex = 0;
+	var mousey = 0;
+	init();
+
+	function init(){
+		document.getElementById('kills').innerText = kills;
+	}
+
+	function scopepos(){
+		document.getElementById("scope_position").style.left = event.clientX - 88;
+		document.getElementById("scope_position").style.top = event.clientY -65;
+		document.getElementById('scope_position').style.cursor = 'none';
+	}
+
+	var x_move = 2;
+	var y_move = 1;
+	var head_x = 0;
+	var head_y = 0;
+
+	setInterval(function(){
+
+		head_x = head_x + x_move;
+		document.getElementById("floating_head").style.left = head_x
+		head_y = head_y + y_move;
+		document.getElementById("floating_head").style.top = head_y;
+
+		if(head_x>800){
+			x_move = x_move - 4;
+		}
+
+		if(head_y>550){
+			y_move = y_move - 4;
+		}
+
+		if(head_y<0){
+			y_move = y_move + 4;
+		}
+
+		if(head_x<0){
+			x_move = x_move + 4;
+		}
+
+	}, 10)
+
+	function shoot(){
+		var audio = new Audio('effects/shot.mp3');
+		audio.play();	
+
+		if(event.clientX > head_x){
+			if(event.clientX < (head_x + 200)){
+				if(event.clientY > head_y){
+					if(event.clientY < (head_y + 200)){
+
+						kills = kills+1;
+						document.getElementById('kills').innerText = kills;
+						document.getElementById("face").src = "effects/dead.png";
+
+						setTimeout(function(){ document.getElementById("face").src = "effects/alive.png";	}, 600);
+
+					}
+				}
+			}
+		}
+	}
+
+</script>
+</html>
+
+
+
+
+
